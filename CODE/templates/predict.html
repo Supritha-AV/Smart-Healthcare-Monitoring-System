@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="Poojitha health monitoring system">
+  <meta name="author" content="Sapthagiri clg">
+  <meta name="og:image" content="static/logo1.png">
+  <meta name="Keywords" content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  <title>Health Monitoring System</title>
+  <link rel="icon" href="{{ url_for('static', filename = 'logo1.png') }}" type="image/icon type">
+  <p> Health Monitoring </p>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+			h5{
+				color: rgb(255, 85, 0);
+			}
+		</style>
+</head>
+<body style="background-image: url('static/res.jpg'); background-size: 100% 100vh; background-repeat:no-repeat;">
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+        <a style="text-decoration: none; color: white" href="{{ url_for('home') }}">Health Monitoring System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav ml-auto">
+             <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('kidneyPage') }}">Health Monitoring</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+           </ul>
+         </div>
+       </nav>
+<br><br>
+<main>
+
+
+	<div class="container-fluid" style="margin-bottom: 10px;">
+
+    <div class="row"  style="margin-bottom: 477px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="jumbotron ">
+
+            {% if out == 1 %}
+                
+                <h1 class="display-4">{{name}} , You are Healthy ... <br></h1>
+                <!-- <p class="lead">Please Consult the Doctor Immideately. It was too risky without consultation. Make sure of health in your diet.</p> -->
+            {% endif %}
+
+            {% if out==2 %}
+            <h1 >{{name}} , You Might occur with Fever <br> Remidies For Fever.</h1>
+            <p class="lead">{{med}}</p>
+            <!-- <p >
+              <a class="btn btn-primary btn-lg" href="/class2" style="width: 200px;" role="button">Check diet</a>
+            </p> -->
+            {% endif %}
+
+
+            {% if out==3 %}
+            <h1 > {{name}} , You Might occur with Viral Fever <br> Remidies For Chest Pain.</h1>
+            <p class="lead">{{med}}</p>
+            <!-- <p >
+              <a class="btn btn-primary btn-lg" href="/class3" style="width: 200px;" role="button">Check diet</a>
+            </p> -->
+            {% endif %}
+
+
+            {% if out==4 %}
+            <h1 >{{name}} , You are critical , Consult the Nearby doctors <br> Remidies For critical.</h1>
+            <p class="lead">{{med}}</p>
+            <!-- <p >
+              <a class="btn btn-primary btn-lg" href="/class4" style="width: 200px;" role="button">Check diet</a>
+            </p> -->
+            {% endif %}
+          
+
+            <a class="btn btn-primary btn-lg" href="/kidneyPage" style="width: 200px;" role="button">Recheck</a>
+          {% if out !=1 %}
+          <br><br>
+                <p class="lead">
+                  <a class="btn btn-primary btn-lg" target="_blank" href="https://www.who.int/" style="width: 200px;" role="button">Learn more</a>
+                </p>
+            {% endif %}
+            <center>
+            <h5>{{hbb}}</h5><br>
+            <h5>{{tempp}}</h5><br>
+            <h5>{{oxyy}}</h5><br>
+            <h5>{{bpp}}</h5><br>
+          </center>
+          </div>
+    </div> 
+    <div class="col-md-3"></div>
+<div>
+  </div>
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+{% extends 'main2.html' %}
+{% block content %}
+
+<div class="row"  style="margin-bottom: 50px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <center><h1>Health Monitoring System</h1></center> <br>
+        <div class="card card-body" style="border: 1px solid black;">
+            <form class="form-horizontal" action="{{ url_for('predictPage') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="text" name="name" placeholder="name" required step="any">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="age" placeholder="age" required step="any">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="bp" placeholder="bp" required step="any">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="al" placeholder="al" required step="any">
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="sg" placeholder="sg" required step="any">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="sc" placeholder="sc" required step="any">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="sod" placeholder="sod" required step="any">
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="hemo" placeholder="hemo" required step="any">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input style="border: 1px solid black;" class="form-control" type="number" name="appet" placeholder="appet" required step="any">
+                        </div>
+                    </div>
+                </div>
+                
+                <input type="submit" class="btn btn-info btn-block" value="Predict" required step="any">
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div> 
+{% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Project Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.js" integrity="sha512-o4gKX6jcK0rdciOZ9X8COYkV9gviTJAbYEVW8aC3OgIRuaKDmcT9/OFXBVzHSSOxiTjsTktqrUvCUrHkQHSn9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="og:title" content="Prasanth Health monitoring system">
+  <meta name="author" content="Nan than da">
+  <meta name="og:image" content="static/logo1.png">
+  <meta name="Keywords" content="Flask, Machine Learning, Deep Learning, Artificial Intelligence, AI, ML,DL, Web Development">
+  <meta name="description" content="A Machine Learning and Deep Learning based webapp for Multiple Disease Prediction.">
+  <title>Health Monitoring System</title>
+  <link rel="icon" href="{{ url_for('static', filename = 'logo1.png') }}" type="image/icon type">
+  <p> Health Monitoring </p>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+  <style>
+    #home, #form1, #form2, #form3, #form4{
+      display: none;
+      border: 1px solid rgb(255, 255, 255);
+      padding: 25px 50px;
+      width: 70%;
+      margin: auto;
+        /* opacity: 0; */
+        /* transition: all 1s linear;
+        transform: scale(0); */
+    }
+    h2,label,p {
+      color: aliceblue;
+    }
+    #home.active, #form1.active, #form2.active, #form3.active, #form4.active{
+        /* transform: scale(1); */
+        /* opacity: 1; */
+        display: block;
+}
+#form1 button, #form2 button{
+  background-color: greenyellow;
+}
+#form1 button:hover, #form2 button:hover{
+  background-color: green;
+}
+
+#form1 a, #form2 a{
+  color: rgb(4, 226, 255);
+}
+#form1 a:hover, #form2 a:hover{
+  color: rgb(255, 6, 209);
+}
+  </style>
+</head>
+<body style="background-image: url('static/log.jpg'); background-size: 100% 100vh; background-repeat: no-repeat; ">
+
+	<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+    <a style="text-decoration: none; color: white" href="{{ url_for('home') }}">Health Monitoring System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNav">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
+           <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+         </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">User</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('aboutus') }}">About us</a>
+          </li>
+       </ul>
+     </div>
+   </nav>
+  <br><br><br>
+<div class="container">
+
+  {% if msg %}
+  <div class="container">
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>{{msg}}</strong> 
+    </div>
+  </div>
+  {% endif %}
+
+    <form  method="post" action="{{ url_for('userlog')}}" id="form1" class="active">
+      <h2>User Login</h2>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" required placeholder="Enter username" name="name">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="password">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button></br></br>
+      <p>Click here to <a data-value="#form2" onclick="toggleform(event)">Sign up</a></p>
+    </form>
+
+    
+    <form method="post" action="{{ url_for('userreg')}}" id="form2">
+      <h2>User Regestration</h2>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" id="username" required placeholder="Enter username" name="name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address" placeholder="Enter email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="phone">Mobile No.:</label>
+        <input type="text" class="form-control" id="phone" required pattern="[7-9]{1}[0-9]{9}" 
+        title="Phone number with 7-9 and remaing 9 digit with 0-9" placeholder="Enter mobile number" name="phone">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Enter password" name="password">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button></br></br>
+      <p>Click here to <a data-value="#form1" onclick="toggleform(event)">Sign in</a></p>
+    </form>
+
+</div>
+
+<script>
+    function toggleform(e) {
+    var Id =(e.target.getAttribute('data-value'))
+    let Items= ['#form1', '#form2'];
+    Items.map(function(item) {
+        if(Id === item ) {
+            $(item).addClass("active");
+        }
+        else {
+        $(item).removeClass("active");
+        }
+    })
+}
+
+</script>
+</body>
+</html>

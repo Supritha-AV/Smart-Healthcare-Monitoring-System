@@ -1,0 +1,142 @@
+<html>
+	<head>
+	<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<title>Health Monitoring System</title>
+		<style>
+			#chat{
+				position: fixed;
+				bottom: 50px;
+				right: 50px;
+			}
+		</style>
+	</head>
+	<body style="background-image:url('static\\bg.jpg');background-repeat: no-repeat;background-size: cover;"></body>
+
+	<body>
+		<br> <br> <br> <br><br>
+	<!-- Java Script -->	
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		
+		
+		<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark" style="background-color: black !important;">
+			<a style="text-decoration: none; color: white" href="{{ url_for('home') }}">Health Monitoring System</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			   <span class="navbar-toggler-icon"></span>
+			 </button>
+			 <div class="collapse navbar-collapse" id="navbarNav">
+			   <ul class="navbar-nav ml-auto">
+				  <li class="nav-item active">
+					<a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+				  </li>
+			   </ul>
+			 </div>
+		   </nav>
+		{% block content%}
+		<div class="container">
+			<br>
+			<br>
+
+			<!--Prediction Result-->
+			<center>
+			<div id ="result">
+				<h3><strong style="color:red">{{result}}</strong></h3>
+				
+			</div>
+		</center>
+			
+			
+			
+			<form action = "{{url_for('predictPage')}}" method ="POST" >
+				<fieldset>
+					
+				  <div class="card card-body" >
+					<center><h3>Health Monitoring</h3></center>
+					<hr>
+					<div class="form-group  row">
+						<div class="col-sm-4">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="col-sm-4">
+							<label for="age">Age</label>
+							<input type="number" class="form-control" id="age" name="age" min="20" max="100" required>
+						</div>
+						<div class="col-sm-4">
+							<label for="sex">Gender</label>
+							<select class="form-control" id="sex"  name="sex" required>
+							  <option disabled selected value> -- Select an Option -- </option>
+							  <option value = "0">Male</option>
+							  <option value = "1">Female</option>
+							</select>
+							</div>
+					   
+					</div>
+					<div class="form-group  row">
+						<div class="col-sm-4">
+						<label for="bp">Blood Pressure</label>
+						<input type="number" class="form-control" value= "{{bp}}" id="bp" name="bp" required  >
+						</div>
+						<div class="col-sm-4">
+							<label for="oxy">Oxygen</label>
+							<input type="number" class="form-control" value="{{oxy}}" id="oxy" name="oxy" required>
+						  </div>
+						  <div class="col-sm-4">
+							<label for="heart">Heart Beat</label>
+							<input type="number" class="form-control" value="{{hb}}" id="heart" name="heart" required>
+						</div>
+						  
+					</div>
+							<div class="form-group  row">
+						<div class="col-sm-6">
+							<label for="ecg" >ECG </label>
+							<input type="number" class="form-control" id="ecg" value="{{ecg}}" name="ecg"  required>
+						</div>
+							<div class="col-sm-6">
+
+							<label for="Temperature">Temperature</label>
+							<input type="text" class="form-control" id="Temperature" value="{{temp}}" name="Temperature"  required>
+							</div>
+							
+							
+						</div>
+						
+					  <div class="form-group">
+						<input class="btn btn-primary" type="submit" value="Result">
+					  </div>
+					  
+					  
+					</div>
+			 </fieldset>
+
+			 
+			</form>
+
+			<div id="chat">
+				<a href="/chatbot"><img src="data:image/png;base64,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" style="width: 50px;cursor: pointer;"></a>
+			</div>
+			<!-- <form action="{{url_for('msg')}}" method="POST">    
+				<fieldset>
+					<div class="card card-body" >   
+						<div class="form-group"> 
+				<input type="file" id="file" name="filename" required>
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary" type="submit" value="Send">
+				  </div>
+				</div>
+				</fieldset>
+			  </form>  -->
+			
+		<!-- </div> -->
+		
+		{% endblock content %}
+	<!-- </div> -->
+	</body>
+</html>
+
