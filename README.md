@@ -7,3 +7,36 @@
 3. Run the app.py file in VS Code , or cmd.
 4. command used to used to run - python app.py.
 5. Do star the repo if you found it helpful :). 
+
+## Results
+
+Home Page
+
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/bdb93b7d-a8fa-4f48-aa59-c76e1b0ace5e)
+
+
+User Login
+
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/524887ea-b5ab-4c5c-a599-46070c2a68a7)
+
+
+Health Monitoring
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/d7da23fd-3861-4a7d-a32d-1a3855145b0a)
+
+
+Predections
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/0cbb7666-a575-435e-a8f0-0b7d2ef1b123)
+
+
+Medical Help ChatBot
+
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/3992109a-f833-48f0-938f-cf4c9e0f86a9)
+
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/1808f423-71e2-490d-965e-240d6dd7d6dd)
+
+
+Hospital Recommendation
+
+![image](https://github.com/Supritha-AV/Smart-Healthcare-Monitoring-System/assets/119425761/895ba3f2-8dd3-494c-83f4-89090c91f9fd)
+
+
